@@ -12,6 +12,18 @@ class SermonListCreateView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(added_by=self.request.user)
 
+    # impliment filter by preacher or date
+    def get_query(self):
+        queryset = sermon.objects.all()
+        preacher = self.request.query_params.get("preacher")
+        date = self.request.query_params.get("date")
+
+        if preacher:
+            queryset = queryset.filter(preacher_icontains=preacher)
+        if date:
+            queryset = queryset.filter(date=date)
+
+        return queryset
 # Retrieve, update, delete a specific sermon
 class SermonDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Sermon.objects.all()
