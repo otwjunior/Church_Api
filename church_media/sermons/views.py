@@ -19,7 +19,7 @@ class SermonListCreateView(generics.ListCreateAPIView):
         date = self.request.query_params.get("date")
 
         if preacher:
-            queryset = queryset.filter(preacher_icontains=preacher)
+            queryset = queryset.filter(preacher__icontains=preacher)
         if date:
             queryset = queryset.filter(date=date)
 

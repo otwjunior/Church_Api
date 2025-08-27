@@ -7,7 +7,7 @@ from .serializers import SongSerializer
 class SongListCreateView(generics.ListCreateAPIView):
     queryset = Song.objects.all()
     serializer_class = SongSerializer
-    permission_classes = [permissions.IsAuthenticatedOrRedOnly]  # only logged-in users can add/create new song
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]  # only logged-in users can add/create new song
 
     def perform_create(self, serializer):
         serializer.save(added_by=self.request.user)  # set added_by automatically
@@ -19,15 +19,15 @@ class SongListCreateView(generics.ListCreateAPIView):
         category = self.request.query_params.get("category")
 
         if title:
-            queryset = queryset.filter(title_icontins=title)
+            queryset = queryset.filter(title__icontains=title)
         if category:
-            queryset = queryse.filter(category_icontains=category)
+            queryset = queryset.filter(category__icontains=category)
         return queryset
 # Retrieve, update, delete a specific song
 class SongDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Song.objects.all()
     serializer_class = SongSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     # restrict update/delete to the user who added it
     def get_queryset(self):
