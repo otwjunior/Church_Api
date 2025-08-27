@@ -1,1 +1,1 @@
-web: gunicorn church_media.wsgi
+web: gunicorn church_media.wsgi:application
