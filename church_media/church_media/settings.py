@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 #deployment settings
 import dj_database_url
-from decoupls import config
+from decouple import config
 #manage db credentials
 import os
 from dotenv import load_dotenv
