@@ -17,6 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
+#backdoor
+from django.core.management import call_command
+
+def migrate_view(request):
+    call_command("migrate")
+    return HttpResponse("Migrations applied!")
+
+urlpatterns += [
+    path("run-migrations/", migrate_view),
+]
 
 def home(request):
     return HttpResponse("<h1>Church Media API 🎶</h1><p>Welcome! Use the endpoints below:</p><ul><li>/api/songs/</li><li>/api/users/</li></ul>")
