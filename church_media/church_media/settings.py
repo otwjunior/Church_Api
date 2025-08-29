@@ -33,7 +33,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['church-api-862r.onrender.com','127.0.0.1','localhost','ddf3cf26d14e.ngrok-free.app']
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 
 # Application definition
@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'church_media.wsgi.application'
 if os.getenv("DATABASE_URL"):
     # use platform providing db url
     DATABASES = {
-        'default': dj_database_url.config(default='postgresql://church_db_qekb_user:dQjzdwVm1OfqU0pkks4iWimeRF9MAAEE@dpg-d2nijier433s73bih1d0-a.oregon-postgres.render.com/church_db_qekb')
+        'default': dj_database_url.config(default=config('DATABASE_URL'))
         
     }
 else:
@@ -102,7 +102,6 @@ else:
         }
     }
 
-print(DATABASES['default'])
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
