@@ -16,8 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("<h1>Church Media API 🎶</h1><p>Welcome! Use the endpoints below:</p><ul><li>/api/songs/</li><li>/api/users/</li></ul>")
 
 urlpatterns = [
+    path('', home, name='home'), #simple homepage
     path('admin/', admin.site.urls),
     path("api/users/", include("users.urls")),
     path("api/songs/", include("songs.urls")),
