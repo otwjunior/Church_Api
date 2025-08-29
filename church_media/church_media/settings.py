@@ -31,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 #SECRET_KEY = 'django-insecure-3k_wzxu1fv#y!ic&cxo%09s=r#q-t!$v)r(bdq-d9jg1c3hmpn'
 SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = ['127.0.0.1','localhost','church-api-862r.onrender.com']
 

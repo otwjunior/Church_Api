@@ -19,7 +19,7 @@ class SongListCreateView(generics.ListCreateAPIView):
         category = self.request.query_params.get("category")
 
         if title:
-            queryset = queryset.filter(title__icontains=title)
+            queryset = querynset.filter(title__icontains=title)
         if category:
             queryset = queryset.filter(category__icontains=category)
         return queryset
