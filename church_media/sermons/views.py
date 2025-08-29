@@ -7,8 +7,7 @@ from .serializers import SermonSerializer
 class SermonListCreateView(generics.ListCreateAPIView):
     queryset = Sermon.objects.all()
     serializer_class = SermonSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]  # only logged-in users can add/create new sermon
     def perform_create(self, serializer):
         serializer.save(added_by=self.request.user)
 

@@ -24,9 +24,9 @@ def home(request):
 urlpatterns = [
     path('', home, name='home'), #simple homepage
     path('admin/', admin.site.urls),
-    path("api/users/", include("users.urls")),
-    path("api/songs/", include("songs.urls")),
-    path("api/sermons/", include("sermons.urls")),
+    path("users/", include("users.urls")),
+    path("songs/", include("songs.urls")),
+    path("sermons/", include("sermons.urls")),
 
     
 ]
