@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'church_media.wsgi.application'
 if os.getenv("DATABASE_URL"):
     # use platform providing db url
     DATABASES = {
-        'default': dj_database_url.config(default=config('DATABASE_URL'))
+        'default': dj_database_url.config(default='postgresql://church_db_qekb_user:dQjzdwVm1OfqU0pkks4iWimeRF9MAAEE@dpg-d2nijier433s73bih1d0-a.oregon-postgres.render.com/church_db_qekb')
         
     }
 else:
