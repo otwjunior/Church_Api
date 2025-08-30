@@ -19,7 +19,7 @@ from django.urls import path, include
 from django.http import HttpResponse
 
 def home(request):
-    return HttpResponse("<h1>Church Media API 🎶</h1><p>Welcome! Use the endpoints below:</p><ul><li>/api/songs/</li><li>/api/users/</li></ul>")
+    return HttpResponse("<h1>Church Media API 🎶</h1><p>Welcome! easy sermon retrival and lyrics projections for you</p>")
 
 urlpatterns = [
     path('', home, name='home'), #simple homepage
